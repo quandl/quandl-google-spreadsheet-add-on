@@ -30,7 +30,7 @@
 function readQuandlData() {
 
 	// used to build the URL
-	var protocol = "http"
+	var protocol = "https"
 	var domain = "www.quandl.com";
 	var api_version = "1";
 	var root_controller = "datasets";
@@ -43,19 +43,13 @@ function readQuandlData() {
 	// only works with json right now
 	var format = "json";
 
-	if (!auth_token) {
-		var parameters = {
-			"sort_order": "desc"
-		};
-	} else {
+  var parameters = "?sort_order=desc";
+
+  if (auth_token) {
 		// replace the auth_token in the cache
 		// this is done to continually push back the expiry
 		cache.put('auth_token', auth_token, cache_expiration_in_seconds);
-
-		var parameters = {
-			"auth_token": encodeURIComponent(auth_token),
-			"sort_order": "desc"
-		};
+		parameters = parameters + "&auth_token=" + encodeURIComponent(auth_token);
 	}
 
 	// obtain a handle to the spreadsheet objects
@@ -76,7 +70,7 @@ function readQuandlData() {
 	var full_url = protocol + "://" + domain + "/api/v" + api_version + "/" + root_controller + "/" + quandl_code + "." + format;
 
 	// effect the call to the url
-	var result_text = UrlFetchApp.fetch(full_url, parameters);
+	var result_text = UrlFetchApp.fetch(full_url + parameters);
 
 	if (format == "json") {
 
