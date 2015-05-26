@@ -34,6 +34,7 @@ function readQuandlData() {
 	var domain = "www.quandl.com";
 	var api_version = "1";
 	var root_controller = "datasets";
+	var request_source = "googledocs";
 
 	// auth_token is stored in the cache
 	var cache = CacheService.getPrivateCache();
@@ -43,7 +44,7 @@ function readQuandlData() {
 	// only works with json right now
 	var format = "json";
 
-  var parameters = "?sort_order=desc";
+  var parameters = "?sort_order=desc&request_source=" + request_source;
 
   if (auth_token) {
 		// replace the auth_token in the cache
