@@ -169,8 +169,7 @@ function getQuandlCodesFromRangeValues(range_values) {
 function requestCodeFromUser() {
 
 	var ui = SpreadsheetApp.getUi();
-	var response = ui.prompt('Quandl Code Required', 'Please enter the Quandl code in the correct format (e.g. TAMMER1/SHIBOR) for the dataset you wish to load and then 
-click OK.', ui.ButtonSet.OK_CANCEL);
+	var response = ui.prompt('Quandl Code Required', 'Please enter the Quandl code in the correct format (e.g. TAMMER1/SHIBOR) for the dataset you wish to load and then click OK.', ui.ButtonSet.OK_CANCEL);
 	var quandl_code = response.getResponseText();
 
 	if (response.getSelectedButton() == ui.Button.OK && quandl_code) {
