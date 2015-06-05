@@ -34,6 +34,7 @@ function readQuandlData() {
 	var domain = "www.quandl.com";
 	var api_version = "1";
 	var root_controller = "datasets";
+	var request_source = "googledocs";
 
 	// auth_token is stored in the cache
 	var cache = CacheService.getPrivateCache();
@@ -43,7 +44,7 @@ function readQuandlData() {
 	// only works with json right now
 	var format = "json";
 
-  var parameters = "?sort_order=desc";
+  var parameters = "?sort_order=desc&request_source=" + request_source;
 
   if (auth_token) {
 		// replace the auth_token in the cache
@@ -168,8 +169,7 @@ function getQuandlCodesFromRangeValues(range_values) {
 function requestCodeFromUser() {
 
 	var ui = SpreadsheetApp.getUi();
-	var response = ui.prompt('Quandl Code Required', 'Please enter the Quandl code in the correct format (e.g. TAMMER1/SHIBOR) for the dataset you wish to load and then 
-click OK.', ui.ButtonSet.OK_CANCEL);
+	var response = ui.prompt('Quandl Code Required', 'Please enter the Quandl code in the correct format (e.g. TAMMER1/SHIBOR) for the dataset you wish to load and then click OK.', ui.ButtonSet.OK_CANCEL);
 	var quandl_code = response.getResponseText();
 
 	if (response.getSelectedButton() == ui.Button.OK && quandl_code) {

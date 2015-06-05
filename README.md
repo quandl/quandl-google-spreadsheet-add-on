@@ -18,7 +18,7 @@ This is a simple tool to import Quandl datasets directly into Google Spreadsheet
 
 4. From the spreadsheet, choose the menu _Tools -> Script Editor_
 
-5. In the next dialog box: _Create Script for -> Spreadsheet_
+5. In the next dialog box: _Create Script for -> Google Sheets Add-on_
 
 6. Paste the code into window
 
@@ -29,6 +29,8 @@ This is a simple tool to import Quandl datasets directly into Google Spreadsheet
 9. Close the Script Editor tab and refresh your spreadsheet using F5 or CMD-R
 
 10. You will see a new menu after "Help", called "Quandl"
+
+11. Enter your auth token (found as "API key" at https://quandl.com/account): _Quandl -> Enter Auth Token_
 
 # Example Use
 
@@ -46,5 +48,5 @@ This is a simple tool to import Quandl datasets directly into Google Spreadsheet
 
 * If you enter your Auth Token, it will remain valid for six hours after your last request.
 
-* If you do not enter an Auth Token, the system will default to using no token. You may experience issues requesting excessive amounts of data without a valid token. 
+* If you do not enter an Auth Token, the system will default to using no token. This will most likely result in data not being downloaded as anonymous data access is limited.
 
